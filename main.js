@@ -25,25 +25,27 @@ var checkForWinner = function () {
   // that if three spaces in a row are the same, all three spaces are
   // marked by a player, and not all empty.
 
-  if ( spaces[0] === spaces[1] && spaces[1] === spaces[2]
-      || spaces[3] === spaces[4] && spaces[4] === spaces[5]
-      || spaces[6] === spaces[7] && spaces[7] === spaces[8]);
-    // TODO: Check for rest of game winning cases
-
-     // || spaces[0] === spaces[3] && spaces[3] === spaces[6]
-      //|| spaces[1] === spaces[4] && spaces[4] === spaces[7]
-      //| spaces[2] === spaces[5] && spaces[5] === spaces[8])
-
-      //|| spaces[0] === spaces[4] && spaces[4] === spaces[8]
-      //|| spaces[2] === spaces[4] && spaces[4] === spaces[6]);//
+  if ( spaces[0] === spaces[1] && spaces[1] === spaces[2]  ||
+       spaces[3] === spaces[4] && spaces[4] === spaces[5]  ||
+       spaces[6] === spaces[7] && spaces[7] === spaces[8]  ||
+       spaces[0] === spaces[3] && spaces[3] === spaces[6]  ||
+       spaces[1] === spaces[4] && spaces[4] === spaces[7]  ||
+        spaces[2] === spaces[5] && spaces[5] === spaces[8]  ||
+        spaces[0] === spaces[4] && spaces[4] === spaces[8]  ||
+        spaces[2] === spaces[4] && spaces[4] === spaces[6])
 
 
-  {
-    console.log('Somebody won');
+
+    {console.log('Somebody won');
     // TODO: Trigger 'game-win' event with the winning player as the event data
     //$(game-win).trigger(winner);
-  }
-};
+    var winner = currentPlayer
+    $(document).trigger('game-win', winner)}
+
+    };
+
+
+
 
 $(document).on('click', '#board .space', function (e) {
   var spaceNum = $(e.currentTarget).index();
@@ -61,7 +63,7 @@ $(document).on('click', '#board .space', function (e) {
 
 $(document).on('game-win', function (e, winner) {
   // TODO: Alert who won the game
-  Alert(winner + " you are the winner");
+  alert(winner + " you are the winner");
 });
 
 // Start the game
